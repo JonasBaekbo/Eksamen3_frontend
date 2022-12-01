@@ -36,7 +36,7 @@ async function getResponse() {
     const removebutton = document.createElement("button");
     const editlink = document.createElement("a");
     const removelink = document.createElement("a");
-    editlink.href = element.id;
+    editlink.href = "opdater_virksomhed.html?id=" +element.id;
     editbutton.innerHTML = "Ret";
     removebutton.innerHTML = "Slet";
     removelink.href = "";
