@@ -22,9 +22,14 @@ async function getResponse() {
     const subjectnode = document.createTextNode(element.subject);
     const summarynode = document.createTextNode(element.summary);
     const datenode = document.createTextNode(element.date);
-    const contactPersonnode = document.createTextNode(element.currentEmployments);
-    const corporation = document.createTextNode(element.currentcorporation);
-    
+    const contactPersonnode = document.createTextNode(element.currentContactPerson);
+    const corporation = document.createTextNode(element.currentCorporation);
+    const reflink = document.createElement("a");
+    reflink.href = "se_referat.html?id=" + element.id;
+    reflink.innerHTML = "Se referat"
+
+const nuller = document.createTextNode("Ingenting");
+
     const tabledev1 = document.createElement("td")
     const tabledev2 = document.createElement("td")
     const tabledev3 = document.createElement("td")
@@ -35,19 +40,19 @@ async function getResponse() {
     tabledev1.appendChild(datenode)
     div.appendChild(tabledev1)
 
-    tabledev2.appendChild(corporation)
+    tabledev2.appendChild(nuller)
     div.appendChild(tabledev2)
 
-    tabledev3.appendChild(contactPersonnode)
+    tabledev3.appendChild(corporation)
     div.appendChild(tabledev3)
 
-    tabledev4.appendChild(subjectnode)
+    tabledev4.appendChild(contactPersonnode)
     div.appendChild(tabledev4)
 
-    tabledev5.appendChild(summarynode)
+    tabledev5.appendChild(subjectnode)
     div.appendChild(tabledev5)
 
-    tabledev6.appendChild(subjectnode)
+    tabledev6.appendChild(reflink)
     div.appendChild(tabledev6)
 
 
