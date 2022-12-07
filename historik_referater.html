@@ -12,6 +12,9 @@
 
     <link rel="stylesheet" href="menu.css">
     <script src="referat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hideseek/0.8.0/jquery.hideseek.min.js" integrity="sha512-C+RpJPUPkaVe8twNayXS5KZDWZwFhFyVKOd2PqDFjStsvU2CWRVru1wDc353bhb/3tmfy9pXJAdMS/aq1xb+Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script></head>
+
 </head>
 <body>
     <div class="row">
@@ -64,7 +67,7 @@
                     <div class="row">
                             <div class="container-fluid float-end">
                               <div class="d-flex col-md-3 float-end">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control me-2" data-list=".list" id="search" name="search" placeholder="Start typing here" type="text">
                                 <a href="ny_refaret.html"><button class="btn btn-outline-success">Opret</button></a>
                               </div>
                             </div>
@@ -85,7 +88,7 @@
                           </thead>
 
                           
-                          <tbody id="indhold">
+                          <tbody id="indhold" class="list">
                             
                            
                           </tbody>
@@ -99,7 +102,18 @@
         </div>
             
         </div>
+        <script>
+          $(document).ready(function() {
+          $('#search').hideseek({
+              nodata:         'Ingen referater fundet. Prøv venligst med noget andet',
+              attribute:      'text',
+              ignore: '.ignore-me',
+              list: '.list'
+          });
+        });
+        
 
+          </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </body>

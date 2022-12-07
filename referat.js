@@ -39,18 +39,23 @@ const nuller = document.createTextNode("Ingenting");
 
     tabledev1.appendChild(datenode)
     div.appendChild(tabledev1)
+    tabledev1.setAttribute("title", element.date);
 
     tabledev2.appendChild(nuller)
     div.appendChild(tabledev2)
+    tabledev2.setAttribute("title", nuller);
 
     tabledev3.appendChild(corporation)
     div.appendChild(tabledev3)
+    tabledev3.setAttribute("title", corporation);
 
     tabledev4.appendChild(contactPersonnode)
     div.appendChild(tabledev4)
+    tabledev4.setAttribute("title", contactPersonnode);
 
     tabledev5.appendChild(subjectnode)
     div.appendChild(tabledev5)
+    tabledev5.setAttribute("title", subjectnode);
 
     tabledev6.appendChild(reflink)
     div.appendChild(tabledev6)

@@ -15,6 +15,8 @@ async function getResponse() {
     data.forEach(element => {
         const div = document.createElement("div");
     div.classList.add("col-md-3");
+    div.setAttribute("title", element.name);
+
     const imgtag = document.createElement("img");
     //imgtag.src = element.logo;
     const titletag = document.createElement("h4");
