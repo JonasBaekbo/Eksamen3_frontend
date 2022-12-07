@@ -22,6 +22,7 @@ async function getResponse() {
     const subjectnode = document.createTextNode(element.subject);
     const summarynode = document.createTextNode(element.summary);
     const datenode = document.createTextNode(element.date);
+    const employeenode = document.createTextNode(element.employee)
     const contactPersonnode = document.createTextNode(element.currentContactPerson);
     const corporation = document.createTextNode(element.currentCorporation);
     const reflink = document.createElement("a");
@@ -41,7 +42,7 @@ const nuller = document.createTextNode("Ingenting");
     div.appendChild(tabledev1)
     tabledev1.setAttribute("title", element.date);
 
-    tabledev2.appendChild(nuller)
+    tabledev2.appendChild(employeenode)
     div.appendChild(tabledev2)
     tabledev2.setAttribute("title", nuller);
 

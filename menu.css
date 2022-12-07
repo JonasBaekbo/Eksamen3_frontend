@@ -94,3 +94,17 @@ body {
   #virksomheder-collapse, #kontaktperson-collapse, #historikreferat-collapse{
     background-color: #F9FAFC;
   }
+
+  label{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  label>span{
+    transition: all .2s;
+    transform-origin: top left;
+  }
+
+  .summarybox{
+    width: 80%;
+    height: 300px;
+  }
