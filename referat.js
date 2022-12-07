@@ -22,6 +22,7 @@ async function getResponse() {
     const subjectnode = document.createTextNode(element.subject);
     const summarynode = document.createTextNode(element.summary);
     const datenode = document.createTextNode(element.date);
+    const employeenode = document.createTextNode(element.employee)
     const contactPersonnode = document.createTextNode(element.currentContactPerson);
     const corporation = document.createTextNode(element.currentCorporation);
     const reflink = document.createElement("a");
@@ -40,7 +41,7 @@ const nuller = document.createTextNode("Ingenting");
     tabledev1.appendChild(datenode)
     div.appendChild(tabledev1)
 
-    tabledev2.appendChild(nuller)
+    tabledev2.appendChild(employeenode)
     div.appendChild(tabledev2)
 
     tabledev3.appendChild(corporation)
