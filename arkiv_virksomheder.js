@@ -1,6 +1,6 @@
 async function getResponse() {
 	const response = await fetch(
-		'http://localhost:8080/showCorporations',
+		'http://localhost:8080/getArchivedCorporations',
 		{
 			method: 'GET',
 			
@@ -46,25 +46,11 @@ async function getResponse() {
     paragraph.appendChild(contactPersonnode);
     paragraph.appendChild(cplink);
     paragraph.classList.add("ignore-me");
-    const editbutton = document.createElement("button");
-    const removebutton = document.createElement("button");
-    const editlink = document.createElement("a");
-    const removelink = document.createElement("a");
-    editlink.href = "opdater_virksomhed.html?id=" +element.id;
-    editbutton.innerHTML = "Ret";
-    removebutton.innerHTML = "Arkiver";
-    removebutton.setAttribute("onclick", "archive("+ element.id + ")");
-
-    removelink.href = "";
-    editlink.appendChild(editbutton);
-    removelink.appendChild(removebutton);
 
 
     div.appendChild(imgtag);
     div.appendChild(titletag);
     div.appendChild(paragraph);
-    div.appendChild(editlink);
-    div.appendChild(removelink);
     elementa.appendChild(div);
     console.log(div);
         
@@ -76,19 +62,5 @@ async function getResponse() {
 
 }
 getResponse();
-async function archive(corpId) {
-    if(confirm('Er du sikker på at du vil arkivere denn virksomhed')){
-
-        const response = await fetch(
-        'http://localhost:8080/archiveCorporation?corpId=' + corpId,
-        {
-                method: 'PUT',
-                
-            }
-        );
-    }
-    window.location.href = "/kontaktpersoner.html"; 
-
-}
 
 

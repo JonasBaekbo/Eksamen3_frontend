@@ -105,9 +105,8 @@
               const urlParams = new URLSearchParams(window.location.search);
   
               const nameparam = urlParams.get('name');
-              document.querySelector("#search").value = nameparam
               document.querySelector("#search").focus();
-              
+              document.querySelector("#search").value = nameparam
         }
         });
         

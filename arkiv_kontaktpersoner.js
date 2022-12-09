@@ -1,6 +1,6 @@
 async function getResponse() {
 	const response = await fetch(
-		'http://localhost:8080/getAllContactPersons',
+		'http://localhost:8080/getArchivedContactPersons',
 		{
 			method: 'GET',
 			
@@ -34,23 +34,13 @@ async function getResponse() {
     paragraph.appendChild(phonenrnode);
     paragraph.innerHTML += "<br>";
     paragraph.appendChild(emailnode);
-    const editbutton = document.createElement("button");
-    const removebutton = document.createElement("button");
-    const editlink = document.createElement("a");
-    const removelink = document.createElement("a");
-    editlink.href = "opdater_kontaktperson.html?contId=" + element.id;
-    editbutton.innerHTML = "Ret";
-    removebutton.innerHTML = "Arkiver";
-   removebutton.setAttribute("onclick", "archive("+ element.id + ")");
-    editlink.appendChild(editbutton);
-    removelink.appendChild(removebutton);
+
 
 
     div.appendChild(imgtag);
     div.appendChild(titletag);
     div.appendChild(paragraph);
-    div.appendChild(editlink);
-    div.appendChild(removebutton);
+
     elementa.appendChild(div);
     console.log(div);
         
@@ -62,16 +52,5 @@ async function getResponse() {
 
 }
 getResponse();
-async function archive(contId) {
-    if(confirm('Er du sikker på at du vil arkivere denne kontaktperson')){
-    const response = await fetch(
-		'http://localhost:8080/archiveContact?contId=' + contId,
-		{
-			method: 'PUT',
-			
-		}
-    );
-    }
-    window.location.href = "/kontaktpersoner.html"; 
 
-}
+
