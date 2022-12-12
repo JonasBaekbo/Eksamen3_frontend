@@ -18,7 +18,9 @@ async function getResponse() {
     div.setAttribute("title", element.name);
 
     const imgtag = document.createElement("img");
-    //imgtag.src = element.logo;
+    imgtag.setAttribute('src', element.cpimage.image);
+    imgtag.style.width = "330px";
+    imgtag.style.height = "150px";
     const titletag = document.createElement("h4");
     const titlenode = document.createTextNode(element.name);
     titletag.appendChild(titlenode);

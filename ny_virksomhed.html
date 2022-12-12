@@ -82,7 +82,7 @@
                         <input type="text" name="country" id="country" placeholder="Virksomhedens land" required>
                         <br>
                         <label for="logo">Logo (Upload billede)</label>
-                        <!-- <input type="file" name="logo" id="logo"> -->
+                        <input type="file" name="logo" id="logo">
                         <br>
                         <button type="submit">Opret</button>
                     </form>
@@ -101,16 +101,41 @@
       thisForm.addEventListener('submit', async function (e) {
           e.preventDefault();
           const formData = new FormData(thisForm).entries()
+          const data = Object.fromEntries(formData);
+        let postData = {
+                name: data.name,
+                address: data.address,
+                city: data.city,
+                country: data.country,
+                logo: await loadFile(data.logo)
+            }
+          
+            console.log(postData)
           const response = await fetch('http://localhost:8080/createCorporation', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(Object.fromEntries(formData))
+              body: JSON.stringify(postData)
           });
           const result = await response.json();
           // here we can check the result and based on result we can redirect to new page or show error message
           window.location.href = "/virksomheder.html"; // this will redirect to the new page
       });
-  
+      function loadFile(file) {
+
+return new Promise((resolve, reject) => {
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
+    fileReader.onload = () => {
+        resolve(fileReader.result);
+    };
+
+    fileReader.onerror = (error) => {
+        reject(error);
+    };
+});
+}
   
     </script> 
 

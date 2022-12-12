@@ -17,7 +17,9 @@ async function getResponse() {
     div.classList.add("col-md-3");
     div.setAttribute("title", element.name);
     const imgtag = document.createElement("img");
-    imgtag.src = element.logo;
+    imgtag.setAttribute('src', element.CorporationLogo.image);
+    imgtag.style.width = "330px";
+    imgtag.style.height = "150px";
     const titletag = document.createElement("h4");
     const titlenode = document.createTextNode(element.name);
     titletag.appendChild(titlenode);
