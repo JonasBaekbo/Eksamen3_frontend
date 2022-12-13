@@ -11,9 +11,16 @@ async function getResponse() {
 	}
 	const data = await response.json();
     console.log(data);
-    const elementa = document.getElementById("kontaktpersoner");
+    $('#kontaktpersoner').html('');
     data.forEach(element => {
-        const div = document.createElement("div");
+        updatePage(element);
+    });
+}
+
+function updatePage(element) {
+    const elementa = document.getElementById("kontaktpersoner");
+    
+    const div = document.createElement("div");
     div.classList.add("col-md-3");
     div.setAttribute("title", element.name);
 
@@ -43,7 +50,7 @@ async function getResponse() {
     editlink.href = "opdater_kontaktperson.html?contId=" + element.id;
     editbutton.innerHTML = "Ret";
     removebutton.innerHTML = "Arkiver";
-   removebutton.setAttribute("onclick", "archive("+ element.id + ")");
+    removebutton.setAttribute("onclick", "archive("+ element.id + ")");
     editlink.appendChild(editbutton);
     removelink.appendChild(removebutton);
 
@@ -55,15 +62,11 @@ async function getResponse() {
     div.appendChild(removebutton);
     elementa.appendChild(div);
     console.log(div);
-        
-    });
-
-
-
-
 
 }
+
 getResponse();
+
 async function archive(contId) {
     if(confirm('Er du sikker på at du vil arkivere denne kontaktperson')){
     const response = await fetch(

@@ -77,8 +77,9 @@
                 <div class="container">
                     <div class="row">
                             <div class="container-fluid float-end">
-                              <div class="d-flex col-md-3 float-end">
+                              <div class="d-flex col-md-3 float-end autocompleteBS">
                                 <input class="form-control me-2" data-list=".list" id="search" name="search" placeholder="Start typing here" type="text">
+                                <input type="hidden" id="searchValue">
                                 <a href="ny_refaret.html"><button class="btn btn-outline-success">Opret</button></a>
                               </div>
                             </div>
@@ -113,7 +114,7 @@
         </div>
             
         </div>
-        <script>
+<!--         <script>
           $(document).ready(function() {
           $('#search').hideseek({
               nodata:         'Ingen referater fundet. Prøv venligst med noget andet',
@@ -121,11 +122,10 @@
               ignore: '.ignore-me',
               list: '.list'
           });
-        });
-        
-
+        });        
           </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+ -->    
 
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+     </body>
 </html>
