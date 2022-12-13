@@ -11,19 +11,20 @@ async function getResponse() {
     }
     const data = await response.json();
     console.log(data);
-    const elementa = document.getElementById("virksomheder");
     data.forEach(element => {
-
+        
         updatePage(element);
     });
+}
 
 
-    function updatePage(element) {
+function updatePage(element) {
+        const elementa = document.getElementById("virksomheder");
         const div = document.createElement("div");
         div.classList.add("col-md-3");
         div.setAttribute("title", element.name);
         const imgtag = document.createElement("img");
-        imgtag.setAttribute('src', element.CorporationLogo.image);
+        imgtag.setAttribute('src', element.CorporationLogo.imageString);
         imgtag.style.width = "330px";
         imgtag.style.height = "150px";
         const titletag = document.createElement("h4");
@@ -80,7 +81,7 @@ async function getResponse() {
     getResponse();
 
     async function archive(corpId) {
-        if (confirm('Er du sikker på at du vil arkivere denn virksomhed')) {
+        if (confirm('Er du sikker på at du vil arkivere denne virksomhed')) {
 
             const response = await fetch(
                 'http://localhost:8080/archiveCorporation?corpId=' + corpId,
@@ -89,10 +90,9 @@ async function getResponse() {
 
                 }
             );
+            window.location.href = "/kontaktpersoner.html";
         }
     }
-    window.location.href = "/kontaktpersoner.html";
 
-}
 
 
