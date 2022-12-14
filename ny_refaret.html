@@ -81,15 +81,16 @@
                     <label for="subject">Emnet på samtalen:</label>
                     <input type="text" name="subject" id="subject" placeholder="Emne" required>
                     <br>
-                    <label for="employee">Medarbejder:</label>
+                    <br>
+                    <label for="employee">Vores medarbejder:</label>
                     <input type="text" name="employee" id="employee" placeholder="Medarbejder's navn" required>
                     <br>
-                    <label for="date">Dato</label>
+                    <br>
+                    <label for="date">Dato for samtale</label>
                     <input type="date" name="date" id="date">
                     <br>
+                    <br>
                     <label for="corpID">Virksomhed:</label>
-                    <!--<select name="corpID" id="corpID" required>
-                    </select>-->
                     <div class="autocompleteBS">
                         <input type="text" name="corporation" id="corp" required>
                         <input type="hidden" id="corpID">
@@ -99,6 +100,7 @@
                     <select name="contactID" id="contactID" required>
                         <option value="">(Vælg først en virksomhed)</option>
                     </select>
+                    <br>
                     <br>
                     <label for="summary">Referat:</label>
                     <textarea class="summarybox" type="textarea" name="summary" id="summary"
@@ -197,20 +199,20 @@ const data = await response.json();
 <link href="autocompleteBS.css" rel="stylesheet">
 <script src="autocompleteBS.js"></script>
 <script>
-      const autoCompleteConfig = [{
+      const ac  =new AutocompleteBS ([{
         name: 'Corporations',
         debounceMS: 250,
         minLength: 1,
         maxResults: 10,
         inputSource: document.getElementById('corp'),
         targetID: document.getElementById('corpID'),
-        fetchURL: 'http://localhost:8080/findCorporationContaining?name={term}',
+        fetchURL: 'http://localhost:8080/findActiveCorporationContaining?name={term}',
         fetchMap: {id: "id", name: "name"}
       },
-    ];
+    ]);
 
     // Initiate Autocomplete to Create Listeners
-    autocompleteBS(autoCompleteConfig);
+    //autocompleteBS(autoCompleteConfig);
 
     function resultHandlerBS(inputName, selectedData) {
       const currentEmployments = selectedData.currentEmployments;

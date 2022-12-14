@@ -26,7 +26,7 @@ function updatePage(element) {
 
     const imgtag = document.createElement("img");
     imgtag.setAttribute('src', element.cpimage.imageString);
-    imgtag.style.width = "330px";
+    imgtag.style.width = "200px";
     imgtag.style.height = "150px";
     const titletag = document.createElement("h4");
     const titlenode = document.createTextNode(element.name);
