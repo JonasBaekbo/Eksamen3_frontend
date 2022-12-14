@@ -86,7 +86,7 @@
             <div class="container">
                 <div class="row">
                     <div class="container-fluid float-end">
-                        <div class="d-flex col-md-3 float-end">
+                        <div class="d-flex col-md-3 float-end autocompleteBS">
                             <input class="form-control me-2" data-list="#virksomheder" id="search" name="search"
                                    placeholder="Start typing here" type="text">
                             <a href="ny_virksomhed.html">
@@ -123,22 +123,17 @@
 <link href="autocompleteBS.css" rel="stylesheet">
 <script src="autocompleteBS.js"></script>
 <script>
-    const autoCompleteConfig = [{
-      name: 'Corporations',
-      debounceMS: 250,
-      minLength: 1,
-      maxResults: 10,
-      inputSource: document.getElementById('search'),
-      targetID: document.getElementById('searchValue'),
-      fetchURL: 'http://localhost:8080/findActiveCorporationContaining?name={term}',
-      fetchMap: {id: "id", name: "name"}
-    },
-  ];
-
-  console.log(autoCompleteConfig);
-
-  // Initiate Autocomplete to Create Listeners
-  autocompleteBS(autoCompleteConfig);
+  const ac  =new AutocompleteBS ([{
+        name: 'Corporations',
+        debounceMS: 250,
+        minLength: 1,
+        maxResults: 10,
+        inputSource: document.querySelector('#search'),
+        fetchURL: 'http://localhost:8080/findActiveCorporationContaining?name={term}',
+        fetchMap: {id: "id", name: "name"}
+      
+      
+    }]);
 
   function resultHandlerBS(inputName, selectedData) {
     console.log("hej", inputName);
