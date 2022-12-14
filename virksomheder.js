@@ -84,13 +84,13 @@ function updatePage(element) {
         if (confirm('Er du sikker på at du vil arkivere denne virksomhed')) {
 
             const response = await fetch(
-                'http://localhost:8080/archiveCorporation?corpId=' + corpId,
+                'http://localhost:8080/archiveCorporation?corpID=' + corpId,
                 {
                     method: 'PUT',
 
                 }
             );
-            window.location.href = "/kontaktpersoner.html";
+            window.location.href = "/virksomheder.html";
         }
     }
 

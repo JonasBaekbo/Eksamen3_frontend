@@ -70,7 +70,7 @@ getResponse();
 async function archive(contId) {
     if(confirm('Er du sikker på at du vil arkivere denne kontaktperson')){
     const response = await fetch(
-		'http://localhost:8080/archiveContact?contId=' + contId,
+		'http://localhost:8080/archiveContact?contactID=' + contId,
 		{
 			method: 'PUT',
 			
