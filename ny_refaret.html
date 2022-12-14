@@ -88,11 +88,16 @@
                     <input type="date" name="date" id="date">
                     <br>
                     <label for="corpID">Virksomhed:</label>
-                    <select name="corpID" id="corpID" required>
-                    </select>
+                    <!--<select name="corpID" id="corpID" required>
+                    </select>-->
+                    <div class="autocompleteBS">
+                        <input type="text" name="corporation" id="corp" required>
+                        <input type="hidden" id="corpID">
+                    </div>
                     <br>
                     <label for="contactID">Kontaktperson:</label>
                     <select name="contactID" id="contactID" required>
+                        <option value="">(Vælg først en virksomhed)</option>
                     </select>
                     <br>
                     <label for="summary">Referat:</label>
@@ -182,7 +187,40 @@ const data = await response.json();
 
   
   };
-getAllContactPersons();
+//getAllContactPersons();
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="autocompleteBS.css" rel="stylesheet">
+<script src="autocompleteBS.js"></script>
+<script>
+      const autoCompleteConfig = [{
+        name: 'Corporations',
+        debounceMS: 250,
+        minLength: 1,
+        maxResults: 10,
+        inputSource: document.getElementById('corp'),
+        targetID: document.getElementById('corpID'),
+        fetchURL: 'http://localhost:8080/findCorporationContaining?name={term}',
+        fetchMap: {id: "id", name: "name"}
+      },
+    ];
+
+    // Initiate Autocomplete to Create Listeners
+    autocompleteBS(autoCompleteConfig);
+
+    function resultHandlerBS(inputName, selectedData) {
+      const currentEmployments = selectedData.currentEmployments;
+      const dropdown = $('#contactID');
+      dropdown.html('');
+      currentEmployments.forEach(element => {
+        const option = $('<option value=' + element.contactPersonID + '>' + element.contactPersonName + '</option>');
+        dropdown.append(option);
+      });
+    }
 
 </script>
 
