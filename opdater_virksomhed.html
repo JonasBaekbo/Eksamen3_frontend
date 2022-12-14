@@ -136,7 +136,7 @@
             const urlParams = new URLSearchParams(queryString);
 
             const idparam = urlParams.get('id');
-          const response = await fetch('http://localhost:8080/updateCorporation?corpId=' + idparam,
+          const response = await fetch('http://localhost:8080/updateCorporation?corpID=' + idparam,
           {                                                            
               method: 'PUT',
               headers: { 'Content-Type': 'application/json' },
@@ -165,7 +165,7 @@ return new Promise((resolve, reject) => {
   
       async function getResponse(parameter) {
 	const response = await fetch(
-		'http://localhost:8080/findCorporationById?corId=' + parameter,
+		'http://localhost:8080/findCorporationById?corpID=' + parameter,
 		{
 			method: 'GET',
 			

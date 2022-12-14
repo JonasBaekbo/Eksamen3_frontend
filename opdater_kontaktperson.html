@@ -142,7 +142,7 @@
             const contIDparam = urlParams.get('contId');
       
       
-        const uploadfetch = await fetch('http://localhost:8080/updateContactperson?contId=' + contIDparam, {
+        const uploadfetch = await fetch('http://localhost:8080/updateContactperson?contactID=' + contIDparam, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(postData)
@@ -155,7 +155,7 @@
   
       async function getResponse(parameter) {
 	const response = await fetch(
-		'http://localhost:8080/findContactPersonById?contId=' + parameter,
+		'http://localhost:8080/findContactPersonById?contactID=' + parameter,
 		{
 			method: 'GET',
 			
