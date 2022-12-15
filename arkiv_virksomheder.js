@@ -11,9 +11,16 @@ async function getResponse() {
 	}
 	const data = await response.json();
     console.log(data);
+    $('#virksomheder').html('');
+    data.forEach(element => { 
+        updatePage(element);
+    });
+}
+
+function updatePage(element) { 
     const elementa = document.getElementById("virksomheder");
-    data.forEach(element => {
-        const div = document.createElement("div");
+    
+    const div = document.createElement("div");
     div.classList.add("col-md-3");
     div.setAttribute("title", element.name);
     const imgtag = document.createElement("img");
@@ -53,14 +60,9 @@ async function getResponse() {
     div.appendChild(paragraph);
     elementa.appendChild(div);
     console.log(div);
-        
-    });
-
-
-
-
-
+    
 }
+
 getResponse();
 
 

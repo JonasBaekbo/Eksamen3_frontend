@@ -1,10 +1,17 @@
 async function getResponse() {
+    // Check for id in URL
+    let apiUrl = "";
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    if ((id != null) && (id != "")) {
+        apiUrl = "http://localhost:8080/findContactPersonById?contactID=" + id;
+    } else {
+        apiUrl = 'http://localhost:8080/getAllContactPersons'
+    }
+
 	const response = await fetch(
-		'http://localhost:8080/getAllContactPersons',
-		{
-			method: 'GET',
-			
-		}
+		apiUrl,
+		{ method: 'GET' },
 	);
 	if (!response.ok) {
 		throw new Error(`HTTP error! status: ${response.status}`);
@@ -12,9 +19,14 @@ async function getResponse() {
 	const data = await response.json();
     console.log(data);
     $('#kontaktpersoner').html('');
-    data.forEach(element => {
-        updatePage(element);
-    });
+
+    if ($.isArray(data)) {
+        data.forEach(element => {
+            updatePage(element);
+        });
+    } else {
+        updatePage(data);
+    }
 }
 
 function updatePage(element) {
@@ -36,8 +48,8 @@ function updatePage(element) {
     const positionnode = document.createTextNode("Stilling: " + element.currentEmployments[0].position);
     const phonenrnode = document.createTextNode("Telefonnummer: " + element.currentEmployments[0].phonenumber);
     const emailnode = document.createTextNode("E-mail: "+element.currentEmployments[0].email);
-    const addedToCorpnode = document.createTextNode("addedToCorporation: "+element.currentEmployments[0].addedToCorporation);
-    const movedFromCorpe = document.createTextNode("addedToCorporation: "+element.currentEmployments[0].movedFromCorporation);
+    const addedToCorpnode = document.createTextNode("påbegyndt samarbejde: "+element.currentEmployments[0].addedToCorporation);
+    const movedFromCorpe = document.createTextNode("Endt samarbejde: "+element.currentEmployments[0].movedFromCorporation);
     paragraph.appendChild(corpnode);
     paragraph.innerHTML += "<br>";
     paragraph.appendChild(positionnode);

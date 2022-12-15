@@ -94,8 +94,15 @@
                     <input type="email" name="email" id="email" required>
                     <br>
                     <label for="corpID">Virksomhed:</label>
-                    <select name="corpID" id="corpID" required>
-                    </select>
+                    <div class="autocompleteBS">
+                        <input type="text" name="corporationName" id="corp" required>
+                        <input type="hidden" id="corpID">
+                    </div>
+                    <label for="addedToCorporation">Tilføjet som kontaktperson</label>
+                    <input type="date" name="addedToCorporation" id="addedToCorporation">
+                    <label for="movedFromCorporation">Ophørt som kontaktperson</label>
+                    <input type="date" name="movedFromCorporation" id="movedFromCorporation">
+                    <br>
                     <br>
                     <input type="date" name="addedToCorp" id="addedToCorp" hidden>
                     <button type="submit">Opdater kontaktperson</button>
@@ -173,20 +180,25 @@
     const positionne = document.getElementById("position");
     const phonenumbere = document.getElementById("phonenumber");
     const emaile = document.getElementById("email");
-    const addedToCorpe = document.getElementById("addedToCorp");
+    const addedToCorpe = document.getElementById("addedToCorporation");
+    const movedFromCorpe = document.getElementById("movedFromCorporation")
+    const corpName = document.getElementById("corp");
     
     const nameval = data.name;
     const positionval = data.currentEmployments[0].position;
     const phonenumberval = data.currentEmployments[0].phonenumber;
     const emailval = data.currentEmployments[0].email;
     const addedToCorpval = data.currentEmployments[0].addedToCorporation;
-    
+    const movedFromCorpVal = data.currentEmployments[0].movedFromCorporation;
+    const corpNameVal = data.currentEmployments[0].corporationName;
 
     namee.value = nameval;
     positionne.value = positionval;
     phonenumbere.value = phonenumberval;
     emaile.value = emailval;
-    addedToCorpe.value = addedToCorpval;
+    addedToCorpe.valueAsDate= new Date(addedToCorpval);
+    movedFromCorpe.valueAsDate = new Date(movedFromCorpVal);
+    corpName.value = corpNameVal;
 
     
     const corps = await fetch(
@@ -225,6 +237,25 @@ return new Promise((resolve, reject) => {
 });
 }
 
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="autocompleteBS.css" rel="stylesheet">
+<script src="autocompleteBS.js"></script>
+<script>
+      const ac  =new AutocompleteBS ([{
+        name: 'Corporations',
+        debounceMS: 250,
+        minLength: 1,
+        maxResults: 10,
+        inputSource: document.getElementById('corp'),
+        targetID: document.getElementById('corpID'),
+        fetchURL: 'http://localhost:8080/findActiveCorporationContaining?name={term}',
+        fetchMap: {id: "id", name: "name"}
+      },
+    ]);
 </script>
 
 </body>
