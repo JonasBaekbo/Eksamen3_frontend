@@ -123,7 +123,8 @@
                 phonenumber: data.phonenumber,
                 email: data.email,
                 corpID: data.corpID,
-                CPimage: await loadFile(data.CPimage)
+                CPimage: await loadFile(data.CPimage),
+                addedToCorporation: Date.now()
             }
           
             console.log(postData)

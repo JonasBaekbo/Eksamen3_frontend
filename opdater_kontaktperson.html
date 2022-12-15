@@ -97,6 +97,7 @@
                     <select name="corpID" id="corpID" required>
                     </select>
                     <br>
+                    <input type="date" name="addedToCorp" id="addedToCorp" hidden>
                     <button type="submit">Opdater kontaktperson</button>
                 </form>
 
@@ -132,7 +133,9 @@
                 phonenumber: data.phonenumber,
                 email: data.email,
                 corpID: data.corpID,
-                CPimage: await loadFile(data.CPimage)
+                CPimage: await loadFile(data.CPimage),
+                addedToCorporation: data.addedToCorp,
+                movedFromCorporation: null
             }
           
             console.log(postData)
@@ -150,7 +153,7 @@
         const result = await uploadfetch.json();
         console.log(result);
         // here we can check the result and based on result we can redirect to new page or show error message
-        //window.location.href = "/kontaktpersoner.html"; // this will redirect to the new page
+        window.location.href = "/kontaktpersoner.html"; // this will redirect to the new page
     });
   
       async function getResponse(parameter) {
@@ -170,17 +173,20 @@
     const positionne = document.getElementById("position");
     const phonenumbere = document.getElementById("phonenumber");
     const emaile = document.getElementById("email");
+    const addedToCorpe = document.getElementById("addedToCorp");
     
     const nameval = data.name;
     const positionval = data.currentEmployments[0].position;
     const phonenumberval = data.currentEmployments[0].phonenumber;
     const emailval = data.currentEmployments[0].email;
+    const addedToCorpval = data.currentEmployments[0].addedToCorporation;
     
 
     namee.value = nameval;
     positionne.value = positionval;
     phonenumbere.value = phonenumberval;
     emaile.value = emailval;
+    addedToCorpe.value = addedToCorpval;
 
     
     const corps = await fetch(
