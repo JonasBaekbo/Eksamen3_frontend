@@ -46,7 +46,7 @@ function updatePage(element) {
         
         
         if(element.currentEmployments[0] != undefined){
-            contactPersonnode = document.createTextNode("Kontaktperson(er):")
+            contactPersonnode = document.createTextNode("Kontaktperson(er): ")
             paragraph.appendChild(contactPersonnode);
     if(element.currentEmployments.length > 1){
         element.currentEmployments.forEach(test => {
@@ -54,10 +54,10 @@ function updatePage(element) {
             newlink.href = "kontaktpersoner.html?name=" + test.contactPersonName;
             
             newlink.innerHTML += test.contactPersonName;
-            const comma = document.createTextNode(",");
 
-            paragraph.appendChild(newlink);
             paragraph.innerHTML += "<br>"
+            paragraph.appendChild(newlink);
+           
             
         });
     }else if(element.currentEmployments.length = 1){
@@ -65,6 +65,7 @@ function updatePage(element) {
             newlink.href = "kontaktpersoner.html?name=" + element.currentEmployments[0].contactPersonName;
             
             newlink.innerHTML += element.currentEmployments[0].contactPersonName;
+            paragraph.innerHTML += "<br>"
             paragraph.appendChild(newlink);
     }
 }
