@@ -76,7 +76,6 @@
                           <div class="container-fluid float-end">
                             <div class="d-flex col-md-3 float-end">
                               <input class="form-control me-2" data-list="#kontaktpersoner" id="search" name="search" placeholder="Start typing here" type="text">
-                              <a href="ny_kontaktperson.html"><button class="btn btn-outline-success">Opret</button></a>
                             </div>
                           </div>
                   </div>
@@ -98,19 +97,7 @@
               ignore: '.ignore-me',
               list: '.list'
           });
-          const queryString = window.location.href;
-            const param = "name";
-            if(queryString.indexOf('?' + param + '=') != -1){
-
-              const urlParams = new URLSearchParams(window.location.search);
-  
-              const nameparam = urlParams.get('name');
-              document.querySelector("#search").focus();
-              document.querySelector("#search").value = nameparam
-              $('#search').on("_after", function() {
-  alert('after');
-});
-        }
+        
         });
         
 
