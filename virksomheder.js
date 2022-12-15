@@ -19,6 +19,8 @@ async function getResponse() {
 
 
 function updatePage(element) {
+    console.log(element.currentEmployments)
+
         const elementa = document.getElementById("virksomheder");
         const div = document.createElement("div");
         div.classList.add("col-md-3");
@@ -34,18 +36,7 @@ function updatePage(element) {
         const addressnode = document.createTextNode("Adresse: " + element.address);
         const citynode = document.createTextNode("By: " + element.city);
         const countrynode = document.createTextNode(element.country);
-        var contactPersonnode;
-        const cplink = document.createElement("a");
-        if (element.currentEmployments[0] != undefined) {
-            cplink.href = "kontaktpersoner.html?name=" + element.currentEmployments[0].contactPersonName;
-            cplink.innerHTML = element.currentEmployments[0].contactPersonName;
-            contactPersonnode = document.createTextNode("Kontaktperson: ");
-
-        } else if (element.currentEmployments[0] == undefined) {
-            cplink.href = "#";
-            cplink.hidden = true;
-            contactPersonnode = document.createTextNode("Ingen kontaktperson");
-        }
+        const contactPersonnode =document.createTextNode("Kontaktperson(er):")
         paragraph.appendChild(addressnode);
         paragraph.innerHTML += "<br>";
         paragraph.appendChild(citynode);
@@ -53,7 +44,30 @@ function updatePage(element) {
         paragraph.appendChild(countrynode);
         paragraph.innerHTML += "<br>";
         paragraph.appendChild(contactPersonnode);
-        paragraph.appendChild(cplink);
+        paragraph.innerHTML += "<br>";
+
+        if(element.currentEmployments.length > 1){
+            element.currentEmployments.forEach(test => {
+                const newlink = document.createElement('a');
+                newlink.href = "kontaktpersoner.html?name=" + test.contactPersonName;
+                
+                newlink.innerHTML += test.contactPersonName;
+                const comma = document.createTextNode(",");
+
+                paragraph.appendChild(newlink);
+                paragraph.append(comma);
+                
+            });
+        }else if(element.currentEmployments.length = 1){
+            const newlink = document.createElement('a');
+                newlink.href = "kontaktpersoner.html?name=" + element.currentEmployments[0].contactPersonName;
+                
+                newlink.innerHTML += element.currentEmployments[0].contactPersonName;
+                paragraph.appendChild(newlink);
+        }else if (element.currentEmployments[0] == undefined) {
+            contactPersonnode = document.createTextNode("Ingen kontaktperson");
+
+        }
         paragraph.classList.add("ignore-me");
         const editbutton = document.createElement("button");
         const removebutton = document.createElement("button");
