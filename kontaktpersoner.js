@@ -36,6 +36,8 @@ function updatePage(element) {
     const positionnode = document.createTextNode("Stilling: " + element.currentEmployments[0].position);
     const phonenrnode = document.createTextNode("Telefonnummer: " + element.currentEmployments[0].phonenumber);
     const emailnode = document.createTextNode("E-mail: "+element.currentEmployments[0].email);
+    const addedToCorpnode = document.createTextNode("addedToCorporation: "+element.currentEmployments[0].addedToCorporation);
+    const movedFromCorpe = document.createTextNode("addedToCorporation: "+element.currentEmployments[0].movedFromCorporation);
     paragraph.appendChild(corpnode);
     paragraph.innerHTML += "<br>";
     paragraph.appendChild(positionnode);
