@@ -32,6 +32,7 @@ function updatePage(element) {
     
     div.appendChild(imgtag);
     div.appendChild(titletag);
+    
 
     element.employmentHistory.forEach(employment => {
         const paragraph = document.createElement("p");
