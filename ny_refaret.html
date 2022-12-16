@@ -1,230 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/f5056aab8f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="menu.css">
 </head>
+
 <body>
-<div class="row">
-    <div class="col-md-3">
-        <header>
-            <!-- Sidebar -->
-            <div class="flex-shrink-0 p-3 bg-white">
-                <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                    <svg class="bi me-2" width="30" height="24">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                    <span class="fs-5 fw-semibold">Collapsible</span>
-                </a>
-                <ul class="list-unstyled ps-0">
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse"
+    <div class="row">
+        <div class="col-md-3">
+            <header>
+                <!-- Sidebar -->
+                <div class="flex-shrink-0 p-3 bg-white">
+                    <a href="/"
+                        class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                        <svg class="bi me-2" width="30" height="24">
+                            <use xlink:href="#bootstrap"></use>
+                        </svg>
+                        <span class="fs-5 fw-semibold">KontaktSystemet</span>
+                    </a>
+                    <ul class="list-unstyled ps-0">
+                        <li class="mb-1">
+                            <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse"
                                 data-bs-target="#virksomheder-collapse" aria-expanded="false">
-                            Virksomheder
-                        </button>
-                        <div class="collapse" id="virksomheder-collapse" style="">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="virksomheder.html" class="link-dark rounded">Virksomheder</a></li>
-                            </ul>
+                                Virksomheder
+                            </button>
+                            <div class="collapse" id="virksomheder-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="virksomheder.html" class="link-dark rounded">Virksomheder</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle align-items-center rounded collapsed"
+                                data-bs-toggle="collapse" data-bs-target="#kontaktperson-collapse"
+                                aria-expanded="false">
+                                Kontaktpersoner
+                            </button>
+                            <div class="collapse" id="kontaktperson-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="kontaktpersoner.html" class="link-dark rounded">Kontaktpersoner</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle align-items-center rounded collapsed"
+                                data-bs-toggle="collapse" data-bs-target="#historikreferat-collapse"
+                                aria-expanded="true">
+                                Samtalehistorik og referater
+                            </button>
+                            <div class="collapse show" id="historikreferat-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="historik_referater.html" class="link-dark rounded">Samtalehistorik og
+                                            referater</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle align-items-center rounded collapsed"
+                                data-bs-toggle="collapse" data-bs-target="#arkiv-collapse" aria-expanded="false">
+                                Arkiv
+                            </button>
+                            <div class="collapse" id="arkiv-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="arkiv_virksomheder.html" class="link-dark rounded">Arkiverede
+                                            virksomheder</a></li>
+                                    <li><a href="arkiv_kontaktpersoner.html" class="link-dark rounded">Arkiverede
+                                            kontaktpersoner</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+        </div>
+        <div class="col-md-9">
+            <main>
+                <div class="container">
+                    <form action="" method="post" id="Conversation">
+                        <label for="subject">Emnet på samtalen:</label>
+                        <input type="text" name="subject" id="subject" placeholder="Emne" required>
+                        <br>
+                        <br>
+                        <label for="employee">Vores medarbejder:</label>
+                        <input type="text" name="employee" id="employee" placeholder="Medarbejder's navn" required>
+                        <br>
+                        <br>
+                        <label for="date">Dato for samtale</label>
+                        <input type="date" name="date" id="date">
+                        <br>
+                        <br>
+                        <label for="corpID">Virksomhed:</label>
+                        <div class="autocompleteBS">
+                            <input type="text" name="corporationName" id="corp" required>
+                            <input type="hidden" id="corpID">
                         </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#kontaktperson-collapse" aria-expanded="false">
-                            Kontaktpersoner
-                        </button>
-                        <div class="collapse" id="kontaktperson-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="kontaktpersoner.html" class="link-dark rounded">Kontaktpersoner</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#historikreferat-collapse" aria-expanded="true">
-                            Samtalehistorik og referater
-                        </button>
-                        <div class="collapse show" id="historikreferat-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="historik_referater.html" class="link-dark rounded">Samtalehistorik</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#arkiv-collapse" aria-expanded="false">
-                            Arkiv
-                        </button>
-                        <div class="collapse" id="arkiv-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="arkiv_virksomheder.html" class="link-dark rounded">Arkiverede
-                                    virksomheder</a></li>
-                                <li><a href="arkiv_kontaktpersoner.html" class="link-dark rounded">Arkiverede
-                                    kontaktpersoner</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </header>
+                        <br>
+                        <label for="contactID">Kontaktperson:</label>
+                        <select name="contactID" id="contactID" required>
+                            <option value="">(Vælg først en virksomhed)</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label for="summary">Referat:</label>
+                        <textarea class="summarybox" type="textarea" name="summary" id="summary"
+                            placeholder="Referat af samtalen" required></textarea>
+                        </select>
+
+                        <br>
+                        <button type="submit">Opret</button>
+                    </form>
+
+                </div>
+
+            </main>
+        </div>
     </div>
-    <div class="col-md-9">
-        <main>
-            <div class="container">
-                <form action="" method="post" id="Conversation">
-                    <label for="subject">Emnet på samtalen:</label>
-                    <input type="text" name="subject" id="subject" placeholder="Emne" required>
-                    <br>
-                    <br>
-                    <label for="employee">Vores medarbejder:</label>
-                    <input type="text" name="employee" id="employee" placeholder="Medarbejder's navn" required>
-                    <br>
-                    <br>
-                    <label for="date">Dato for samtale</label>
-                    <input type="date" name="date" id="date">
-                    <br>
-                    <br>
-                    <label for="corpID">Virksomhed:</label>
-                    <div class="autocompleteBS">
-                        <input type="text" name="corporationName" id="corp" required>
-                        <input type="hidden" id="corpID">
-                    </div>
-                    <br>
-                    <label for="contactID">Kontaktperson:</label>
-                    <select name="contactID" id="contactID" required>
-                        <option value="">(Vælg først en virksomhed)</option>
-                    </select>
-                    <br>
-                    <br>
-                    <label for="summary">Referat:</label>
-                    <textarea class="summarybox" type="textarea" name="summary" id="summary"
-                              placeholder="Referat af samtalen" required></textarea>
-                    </select>
 
-                    <br>
-                    <button type="submit">Opret</button>
-                </form>
-
-            </div>
-
-        </main>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
 
-<script>
+    <script>
 
-    const thisForm = document.getElementById('Conversation');
-    thisForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const formData = new FormData(thisForm).entries()
-        const corpID = document.querySelector("#corpID").value;
-        const contactID = document.querySelector("#contactID").value;
-      
-        const response = await fetch('http://localhost:8080/createConversation?contactID=' + contactID + "&corpID="+ corpID, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(Object.fromEntries(formData))
+        const thisForm = document.getElementById('Conversation');
+        thisForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(thisForm).entries()
+            const corpID = document.querySelector("#corpID").value;
+            const contactID = document.querySelector("#contactID").value;
+
+            const response = await fetch('http://localhost:8080/createConversation?contactID=' + contactID + "&corpID=" + corpID, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(formData))
+            });
+            const result = await response.json();
+            console.log(result);
+            // here we can check the result and based on result we can redirect to new page or show error message
+            window.location.href = "/historik_referater.html"; // this will redirect to the new page
         });
-        const result = await response.json();
-        console.log(result);
-        // here we can check the result and based on result we can redirect to new page or show error message
-        window.location.href = "/historik_referater.html"; // this will redirect to the new page
-    });
 
-    async function getAllCorporations() {
-const response = await fetch(
-  'http://localhost:8080/showCorporations',
-  {
-    method: 'GET',
-    
-  }
-);
-if (!response.ok) {
-  throw new Error(`HTTP error! status: ${response.status}`);
-}
-const data = await response.json();
-  console.log(data);
-  data.forEach(element => {
-    const optiontag = document.createElement("option")
-    optiontag.value = element.id;
-    optiontag.innerHTML = element.name;
-    document.querySelector("#corpID").appendChild(optiontag);
-  });
+        async function getAllCorporations() {
+            const response = await fetch(
+                'http://localhost:8080/showCorporations',
+                {
+                    method: 'GET',
+
+                }
+            );
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log(data);
+            data.forEach(element => {
+                const optiontag = document.createElement("option")
+                optiontag.value = element.id;
+                optiontag.innerHTML = element.name;
+                document.querySelector("#corpID").appendChild(optiontag);
+            });
 
 
-  
-  };
-  getAllCorporations();
 
-async function getAllContactPersons() {
-const response = await fetch(
-  'http://localhost:8080/getAllContactPersons',
-  {
-    method: 'GET',
-    
-  }
-);
-if (!response.ok) {
-  throw new Error(`HTTP error! status: ${response.status}`);
-}
-const data = await response.json();
-  console.log(data);
-  data.forEach(element => {
-    const optiontag = document.createElement("option")
-    optiontag.value = element.id;
-    optiontag.innerHTML = element.name;
-    document.querySelector("#contactID").appendChild(optiontag);
-  });
+        };
+        getAllCorporations();
+
+        async function getAllContactPersons() {
+            const response = await fetch(
+                'http://localhost:8080/getAllContactPersons',
+                {
+                    method: 'GET',
+
+                }
+            );
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log(data);
+            data.forEach(element => {
+                const optiontag = document.createElement("option")
+                optiontag.value = element.id;
+                optiontag.innerHTML = element.name;
+                document.querySelector("#contactID").appendChild(optiontag);
+            });
 
 
-  
-  };
+
+        };
 //getAllContactPersons();
 
-</script>
+    </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link href="autocompleteBS.css" rel="stylesheet">
-<script src="autocompleteBS.js"></script>
-<script>
-      const ac  =new AutocompleteBS ([{
-        name: 'Corporations',
-        debounceMS: 250,
-        minLength: 1,
-        maxResults: 10,
-        inputSource: document.getElementById('corp'),
-        targetID: document.getElementById('corpID'),
-        fetchURL: 'http://localhost:8080/findActiveCorporationContaining?name={term}',
-        fetchMap: {id: "id", name: "name"}
-      },
-    ]);
+    <link href="autocompleteBS.css" rel="stylesheet">
+    <script src="autocompleteBS.js"></script>
+    <script>
+        const ac = new AutocompleteBS([{
+            name: 'Corporations',
+            debounceMS: 250,
+            minLength: 1,
+            maxResults: 10,
+            inputSource: document.getElementById('corp'),
+            targetID: document.getElementById('corpID'),
+            fetchURL: 'http://localhost:8080/findActiveCorporationContaining?name={term}',
+            fetchMap: { id: "id", name: "name" }
+        },
+        ]);
 
-    // Initiate Autocomplete to Create Listeners
-    //autocompleteBS(autoCompleteConfig);
+        // Initiate Autocomplete to Create Listeners
+        //autocompleteBS(autoCompleteConfig);
 
-    function resultHandlerBS(inputName, selectedData) {
-      const currentEmployments = selectedData.currentEmployments;
-      const dropdown = $('#contactID');
-      dropdown.html('');
-      currentEmployments.forEach(element => {
-        const option = $('<option value=' + element.contactPersonID + '>' + element.contactPersonName + '</option>');
-        dropdown.append(option);
-      });
-    }
+        function resultHandlerBS(inputName, selectedData) {
+            const currentEmployments = selectedData.currentEmployments;
+            const dropdown = $('#contactID');
+            dropdown.html('');
+            currentEmployments.forEach(element => {
+                const option = $('<option value=' + element.contactPersonID + '>' + element.contactPersonName + '</option>');
+                dropdown.append(option);
+            });
+        }
 
-</script>
+    </script>
 
 </body>
+
 </html>

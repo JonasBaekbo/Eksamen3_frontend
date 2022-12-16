@@ -1,6 +1,8 @@
 body {
     min-height: 100vh;
     min-height: -webkit-fill-available;
+    margin-top: 3vh;
+    ;
 }
 
 html {
@@ -101,7 +103,9 @@ main {
     line-height: 1.25;
 }
 
-#virksomheder-collapse, #kontaktperson-collapse, #historikreferat-collapse {
+#virksomheder-collapse,
+#kontaktperson-collapse,
+#historikreferat-collapse {
     background-color: #F9FAFC;
 }
 
@@ -110,7 +114,7 @@ label {
     flex-direction: column-reverse;
 }
 
-label > span {
+label>span {
     transition: all .2s;
     transform-origin: top left;
 }
@@ -118,4 +122,33 @@ label > span {
 .summarybox {
     width: 80%;
     height: 300px;
+}
+
+btn btn-outline-success {
+    width: 100%;
+    margin-left: 3vw;
+}
+
+#virksomheder>div:nth-child(1) {
+    margin-bottom: 2vh;
+}
+
+#virksomheder {
+    margin-top: 3vh;
+}
+
+#virksomheder>div:nth-child(1) {
+    margin-bottom: 2vh;
+}
+
+#virksomheder {
+    margin-top: 3vh;
+}
+
+#kontaktpersoner>div:nth-child(1) {
+    margin-bottom: 2vh;
+}
+
+#kontaktpersoner {
+    margin-top: 3vh;
 }

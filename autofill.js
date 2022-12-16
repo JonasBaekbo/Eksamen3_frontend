@@ -1,4 +1,4 @@
-;(function ($) {
+; (function ($) {
     $.fn.autofill = function (options = {}) {
         const defaults = {
             autofillSelection: true,
@@ -31,10 +31,8 @@
                 .addClass("autofill-input")
             const container = $(`<div class="dropdown"></div>`)
             const list = $(
-                `<ul class="dropdown-menu ${
-                    settings.darkMode ? "dropdown-menu-dark" : ""
-                } autofill-dropdown-menu" ${
-                    settings.fullWidth ? `style="width:100%"` : ""
+                `<ul class="dropdown-menu ${settings.darkMode ? "dropdown-menu-dark" : ""
+                } autofill-dropdown-menu" ${settings.fullWidth ? `style="width:100%"` : ""
                 }></ul>`
             )
 
@@ -63,10 +61,10 @@
 
             settings.itemsLimit =
                 (elem.data("autofill-itemslimit") &&
-                NaN !== parseInt(elem.data("autofill-itemslimit")) &&
-                parseInt(elem.data("autofill-itemslimit")).toString() ===
+                    NaN !== parseInt(elem.data("autofill-itemslimit")) &&
+                    parseInt(elem.data("autofill-itemslimit")).toString() ===
                     elem.data("autofill-itemslimit").toString() &&
-                0 < parseInt(elem.data("autofill-itemslimit"))
+                    0 < parseInt(elem.data("autofill-itemslimit"))
                     ? parseInt(elem.data("autofill-itemslimit"))
                     : 5) ||
                 parseInt(settings.itemsLimit) ||
@@ -119,7 +117,7 @@
                             )
 
                             if (
-                                typeof function () {} ===
+                                typeof function () { } ===
                                 typeof settings.onSelect
                             ) {
                                 settings.onSelect(v, item)
@@ -143,14 +141,14 @@
 
                     elem.trigger("autofill-empty", list)
 
-                    if (typeof function () {} === typeof settings.onEmpty) {
+                    if (typeof function () { } === typeof settings.onEmpty) {
                         settings.onEmpty(item)
                     }
                 }
 
                 elem.trigger("autofill-update", list)
 
-                if (typeof function () {} === typeof settings.onUpdate) {
+                if (typeof function () { } === typeof settings.onUpdate) {
                     settings.onUpdate(list)
                 }
 
@@ -225,7 +223,7 @@
 
                 try {
                     clearInterval(elem.__timers)
-                } catch (tErr) {}
+                } catch (tErr) { }
 
                 if (
                     !text.trim() ||
@@ -253,8 +251,8 @@
                             url: settings.datasetURL,
                             method: settings.datasetMethod,
                             data:
-                                typeof function () {} ===
-                                typeof settings.datasetPostData
+                                typeof function () { } ===
+                                    typeof settings.datasetPostData
                                     ? settings.datasetPostData()
                                     : settings.datasetPostData,
                             dataType: "JSON",
@@ -268,7 +266,7 @@
                         })
                             .then((data) => {
                                 if (
-                                    typeof function () {} ===
+                                    typeof function () { } ===
                                     typeof settings.datasetFormatting
                                 ) {
                                     data = settings.datasetFormatting(data)
@@ -291,7 +289,7 @@
                                 elem.trigger("autofill-error", a, b, c)
 
                                 if (
-                                    typeof function () {} ===
+                                    typeof function () { } ===
                                     typeof settings.onError
                                 ) {
                                     settings.onError(a, b, c)
@@ -336,7 +334,7 @@
 
                 list.empty().append(item).addClass("show")
 
-                if (typeof function () {} === typeof settings.onLoading) {
+                if (typeof function () { } === typeof settings.onLoading) {
                     settings.onLoading(item)
                 }
             })

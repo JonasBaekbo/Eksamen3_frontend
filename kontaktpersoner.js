@@ -46,11 +46,11 @@ function updatePage(element) {
     const paragraph = document.createElement("p");
     // const corpnode = document.createTextNode("Kontaktperson for: " +element.currentEmployments[0].corporationName);
     var corpnode;
-    var positionnode 
-    var phonenrnode 
-    var emailnode 
-    var addedToCorpnode 
-    var movedFromCorpe 
+    var positionnode
+    var phonenrnode
+    var emailnode
+    var addedToCorpnode
+    var movedFromCorpe
 
 
     if (element.currentEmployments.length >= 1) {
