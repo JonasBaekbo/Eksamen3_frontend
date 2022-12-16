@@ -141,8 +141,8 @@
                 email: data.email,
                 corpID: data.corpID,
                 CPimage: await loadFile(data.CPimage),
-                addedToCorporation: data.addedToCorp,
-                movedFromCorporation: null
+                addedToCorporation: data.addedToCorporation,
+                movedFromCorporation: data.movedFromCorporation
             }
           
             console.log(postData)
@@ -199,7 +199,9 @@
     phonenumbere.value = phonenumberval;
     emaile.value = emailval;
     addedToCorpe.valueAsDate= new Date(addedToCorpval);
-    movedFromCorpe.valueAsDate = new Date(movedFromCorpVal);
+    if (movedFromCorpVal != null) {
+        movedFromCorpe.valueAsDate = new Date(movedFromCorpVal);
+    }
     corpName.value = corpNameVal;
     corpID.value = corpIDVal;
 

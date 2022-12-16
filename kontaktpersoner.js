@@ -9,14 +9,14 @@ async function getResponse() {
         apiUrl = 'http://localhost:8080/getAllContactPersons'
     }
 
-	const response = await fetch(
-		apiUrl,
-		{ method: 'GET' },
-	);
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`);
-	}
-	const data = await response.json();
+    const response = await fetch(
+        apiUrl,
+        { method: 'GET' },
+    );
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
     console.log(data);
     $('#kontaktpersoner').html('');
 
@@ -31,7 +31,7 @@ async function getResponse() {
 
 function updatePage(element) {
     const elementa = document.getElementById("kontaktpersoner");
-    
+
     const div = document.createElement("div");
     div.classList.add("col-md-3");
     div.setAttribute("title", element.name);
@@ -44,12 +44,32 @@ function updatePage(element) {
     const titlenode = document.createTextNode(element.name);
     titletag.appendChild(titlenode);
     const paragraph = document.createElement("p");
-    const corpnode = document.createTextNode("Kontaktperson for: " +element.currentEmployments[0].corporationName);
-    const positionnode = document.createTextNode("Stilling: " + element.currentEmployments[0].position);
-    const phonenrnode = document.createTextNode("Telefonnummer: " + element.currentEmployments[0].phonenumber);
-    const emailnode = document.createTextNode("E-mail: "+element.currentEmployments[0].email);
-    const addedToCorpnode = document.createTextNode("påbegyndt samarbejde: "+element.currentEmployments[0].addedToCorporation);
-    const movedFromCorpe = document.createTextNode("Endt samarbejde: "+element.currentEmployments[0].movedFromCorporation);
+    // const corpnode = document.createTextNode("Kontaktperson for: " +element.currentEmployments[0].corporationName);
+    var corpnode;
+    var positionnode 
+    var phonenrnode 
+    var emailnode 
+    var addedToCorpnode 
+    var movedFromCorpe 
+
+
+    if (element.currentEmployments.length >= 1) {
+        corpnode = document.createTextNode("Kontaktperson for: " + element.currentEmployments[0].corporationName);
+        positionnode = document.createTextNode("Stilling: " + element.currentEmployments[0].position);
+        phonenrnode = document.createTextNode("Telefonnummer: " + element.currentEmployments[0].phonenumber);
+        emailnode = document.createTextNode("E-mail: " + element.currentEmployments[0].email);
+        addedToCorpnode = document.createTextNode("Påbegyndt samarbejde: " + element.currentEmployments[0].addedToCorporation);
+        movedFromCorpe = document.createTextNode("Endt samarbejde: " + element.currentEmployments[0].movedFromCorporation);
+    }
+    else {
+        corpnode = document.createTextNode("Kontaktperson for: Ingen virksomhed");
+        positionnode = document.createTextNode("Stilling: Ingen virksomhed");
+        phonenrnode = document.createTextNode("Telefonnummer: Ingen virksomhed");
+        emailnode = document.createTextNode("E-mail: Ingen virksomhed");
+        addedToCorpnode = document.createTextNode("Påbegyndt samarbejde: Ingen virksomhed");
+        movedFromCorpe = document.createTextNode("Endt samarbejde: Ingen virksomhed");
+    }
+
     paragraph.appendChild(corpnode);
     paragraph.innerHTML += "<br>";
     paragraph.appendChild(positionnode);
@@ -64,7 +84,7 @@ function updatePage(element) {
     editlink.href = "opdater_kontaktperson.html?contId=" + element.id;
     editbutton.innerHTML = "Ret";
     removebutton.innerHTML = "Arkiver";
-    removebutton.setAttribute("onclick", "archive("+ element.id + ")");
+    removebutton.setAttribute("onclick", "archive(" + element.id + ")");
     editlink.appendChild(editbutton);
     removelink.appendChild(removebutton);
 
@@ -82,15 +102,15 @@ function updatePage(element) {
 getResponse();
 
 async function archive(contId) {
-    if(confirm('Er du sikker på at du vil arkivere denne kontaktperson')){
-    const response = await fetch(
-		'http://localhost:8080/archiveContact?contactID=' + contId,
-		{
-			method: 'PUT',
-			
-		}
-    );
+    if (confirm('Er du sikker på at du vil arkivere denne kontaktperson')) {
+        const response = await fetch(
+            'http://localhost:8080/archiveContact?contactID=' + contId,
+            {
+                method: 'PUT',
+
+            }
+        );
     }
-    window.location.href = "/kontaktpersoner.html"; 
+    window.location.href = "/kontaktpersoner.html";
 
 }
