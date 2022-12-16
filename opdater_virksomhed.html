@@ -80,6 +80,7 @@
                 <form id="virksomheda">
                     <label for="name">Navn på virksomhed:</label>
                     <input type="text" name="name" id="name" placeholder="Virksomhedens navn" required>
+                    <input type="hidden" name="corpID" id="corpID">
                     <br>
                     <label for="address">Adresse:</label>
                     <input type="text" name="address" id="address" placeholder="Virksomhedens adresse" required>
@@ -127,7 +128,9 @@
                 address: data.address,
                 city: data.city,
                 country: data.country,
+                corpID: data.corpID,
                 logo: await loadFile(data.logo)
+                
             }
           
             console.log(postData)
@@ -180,19 +183,20 @@ return new Promise((resolve, reject) => {
     const addresse = document.getElementById("address");
     const citye = document.getElementById("city");
     const countrye = document.getElementById("country");
+    const corpID = document.getElementById("corpID");
 
     const nameval = data.name;
     const countryval = data.country;
     const addressval = data.address;
     const cityval = data.city;
+    const corpIDVal = data.id;
     namee.value = nameval;
     addresse.value = addressval;
     citye.value = cityval;
     countrye.value = countryval;
+    corpID.value = corpIDVal ;
 
 
-
-    
     };
   
 

@@ -96,7 +96,7 @@
                     <label for="corpID">Virksomhed:</label>
                     <div class="autocompleteBS">
                         <input type="text" name="corporationName" id="corp" required>
-                        <input type="hidden" id="corpID">
+                        <input type="hidden" name="corpID" id="corpID">
                     </div>
                     <label for="addedToCorporation">Tilføjet som kontaktperson</label>
                     <input type="date" name="addedToCorporation" id="addedToCorporation">
@@ -129,7 +129,7 @@
             getResponse(nameparam)
         })
 
-        const thisForm = document.getElementById('kontaktpersoner');
+    const thisForm = document.getElementById('kontaktpersoner');
     thisForm.addEventListener('submit', async function (e) {
         e.preventDefault();
         const formData = new FormData(thisForm).entries()
@@ -183,6 +183,7 @@
     const addedToCorpe = document.getElementById("addedToCorporation");
     const movedFromCorpe = document.getElementById("movedFromCorporation")
     const corpName = document.getElementById("corp");
+    const corpID = document.getElementById("corpID");
     
     const nameval = data.name;
     const positionval = data.currentEmployments[0].position;
@@ -191,6 +192,7 @@
     const addedToCorpval = data.currentEmployments[0].addedToCorporation;
     const movedFromCorpVal = data.currentEmployments[0].movedFromCorporation;
     const corpNameVal = data.currentEmployments[0].corporationName;
+    const corpIDVal = data.currentEmployments[0].corporationId;
 
     namee.value = nameval;
     positionne.value = positionval;
@@ -199,6 +201,7 @@
     addedToCorpe.valueAsDate= new Date(addedToCorpval);
     movedFromCorpe.valueAsDate = new Date(movedFromCorpVal);
     corpName.value = corpNameVal;
+    corpID.value = corpIDVal;
 
     
     const corps = await fetch(
